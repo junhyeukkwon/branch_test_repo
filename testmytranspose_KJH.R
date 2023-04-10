@@ -17,3 +17,34 @@ myvar2 <- matrix(NA, nrow=0, ncol=0)
 myvar2
 mytranspose(myvar2)
 all.equal.raw((myvar2), mytranspose(mytranspose(myvar2)), check.attributes = FALSE) #TRUE
+
+myvar6 <- c(NA)
+myvar6
+mytranspose(myvar6)
+all.equal.raw(as.numeric(myvar6), as.numeric(mytranspose(mytranspose(myvar6)))) #TRUE
+
+myvar7 <- c()
+myvar7
+mytranspose(myvar7)
+all.equal.raw((myvar7), mytranspose(mytranspose(myvar7))) #TRUE
+
+
+d <- c(1,2,3,4)
+e <- c("red", "white", "red", NA)
+f <- c(TRUE, TRUE, TRUE, FALSE)
+myvar8 <- data.frame(d,e,f)
+myvar8
+mytranspose(myvar8)
+myvar8[1,1] == mytranspose(myvar8)[1,1] #TRUE
+myvar8[1,2] == mytranspose(myvar8)[2,1] #TRUE
+myvar8[1,3] == mytranspose(myvar8)[3,1] #TRUE
+myvar8[2,1] == mytranspose(myvar8)[1,2] #TRUE
+myvar8[2,2] == mytranspose(myvar8)[2,2] #TRUE
+myvar8[2,3] == mytranspose(myvar8)[3,2] #TRUE
+myvar8[3,1] == mytranspose(myvar8)[1,3] #TRUE
+myvar8[3,2] == mytranspose(myvar8)[2,3] #TRUE
+myvar8[3,3] == mytranspose(myvar8)[3,3] #TRUE
+myvar8[4,1] == mytranspose(myvar8)[1,4] #TRUE
+myvar8[4,2] == mytranspose(myvar8)[2,4] #NA
+myvar8[4,3] == mytranspose(myvar8)[3,4] #TRUE
+all.equal.raw((as.matrix(myvar8)), mytranspose(mytranspose(myvar8)), check.attributes = FALSE) #TRUE
